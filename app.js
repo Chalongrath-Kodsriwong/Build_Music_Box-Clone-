@@ -23,7 +23,7 @@ const songs = [
     },
     {
         id: '4',
-        songName: `Feature (Speed up)<br>
+        songName: `Feathre (Speed up)<br>
                     <div class="subtitle">Sabrina Carpenter</div>`,
         poster: "img/Poster/Feather.jpg"
     },
