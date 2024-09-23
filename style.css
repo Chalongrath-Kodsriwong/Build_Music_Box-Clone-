@@ -311,7 +311,7 @@ header .master_play .bar .dot::before{
     width: 15px;
     height: 15px;
     border: 1px solid #36e2ec;
-    border-radius: 5%;
+    border-radius: 20px;
     left: -6px;
     top: -6px;
     transition: 1s linear;
@@ -347,6 +347,8 @@ header .master_play .vol{
     height: 2px;
     margin-left: 50px;
     background: rgb(105, 105, 170, .1);
+    /* border-radius: 20px; */
+
 }
 
 header .master_play .vol .bi{
@@ -355,6 +357,8 @@ header .master_play .vol .bi{
     font-size: 25px;
     top: -17px;
     left: -30px;
+    /* border-radius: 20px; */
+
 }
 
 header .master_play .vol input{
@@ -366,6 +370,7 @@ header .master_play .vol input{
     z-index: 99999999;
     transition: 3s linear;
     opacity: 0;
+    border-radius: 20px;
 }
 
 
@@ -375,6 +380,8 @@ header .master_play .vol .vol_bar{
     width: 0%;
     height: 100%;
     top: 0;
+    /* border-radius: 20px; */
+
 }
 
 header .master_play .vol .dot{
@@ -386,6 +393,7 @@ header .master_play .vol .dot{
     left: 0%;
     top: -1px;
     transition: 1s linear;
+    /* border-radius: 20px; */
 }
 
 header .master_play .vol .dot::before{
@@ -399,6 +407,8 @@ header .master_play .vol .dot::before{
     top: -6px;
     transition: 1s linear;
     box-shadow: inset 0px 0px 3px #36e2ec;
+    border-radius: 20px;
+    
 }
 
 header .song_side{

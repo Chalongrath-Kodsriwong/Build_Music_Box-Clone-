@@ -1,4 +1,4 @@
-const music = new Audio('audio/Rain_Wedding.mp3');
+const music = new Audio('audio/1.mp3');
 // music.play();
 
 // Create Array
@@ -7,19 +7,19 @@ const songs = [
         id: '1',
         songName: `เหมือนวิวานห์ (Rain wedding) <br>
                     <div class="subtitle">Jeff Satur</div>`,
-        poster: "img/Poster/Rain Wedding(Jeff).jpg"
+        poster: "img/Poster/1.jpg"
     },
     {
         id: '2',
         songName: `ซ่อน(ไม่)หา Ghost <br>
                     <div class="subtitle">Jeff Satur</div>`,
-        poster: "img/Poster/Ghost(Jefft).png"
+        poster: "img/Poster/2.png"
     },
     {
         id: '3',
         songName: `Subliminal <br>
                     <div class="subtitle">BamBam</div>`,
-        poster: "img/Poster/Subliminal(BamBam).jpg"
+        poster: "img/Poster/3.jpg"
     },
     {
         id: '4',
@@ -50,19 +50,19 @@ const songs = [
         id: '8',
         songName: `เหมือนวิวานห์ (Rain wedding) <br>
                     <div class="subtitle">Jeff Statur</div>`,
-        poster: "img/Poster/Rain Wedding(Jeff).jpg"
+        poster: "img/Poster/1.jpg"
     },
     {
         id: '9',
         songName: `ซ่อน(ไม่)หา Ghost <br>
                     <div class="subtitle">Jeff Satur</div>`,
-        poster: "img/Poster/Ghost(Jefft).png"
+        poster: "img/Poster/2.png"
     },
     {
         id: '10',
         songName: `Subliminal <br>
                     <div class="subtitle">BamBam</div>`,
-        poster: "img/Poster/Subliminal(BamBam).jpg"
+        poster: "img/Poster/3.jpg"
     },
     {
         id: '11',
@@ -95,44 +95,41 @@ const songs = [
         poster: "img/Poster/Feather.jpg"
     },
     {
-        id: '15',
+        id: '16',
         songName: `Falling <br>
                     <div class="subtitle">Mark Tuan</div>`,
         poster: "img/Poster/Falling(Mark_Tuan).jpg"
     },
     {
-        id: '16',
+        id: '17',
         songName: `Perfect Night <br>
                     <div class="subtitle">Lesserafim</div>`,
         poster: "img/Poster/Perfect_Night(Lesserafim).jpg"
     },
     {
-        id: '17',
+        id: '18',
         songName: `Toy <br>
                     <div class="subtitle">The Toy</div>`,
         poster: "img/Poster/Toy(TheToy).webp"
     },
     {
-        id: '18',
+        id: '19',
         songName: `ส่วนต่าง <br>
                     <div class="subtitle">Bowkylion</div>`,
         poster: "img/Poster/ส่วนต่าง(Bowkylion).jpg"
     },
     {
-        id: '19',
+        id: '20',
         songName: `ยังคงคอย <br>
                     <div class="subtitle">Nontanon</div>`,
         poster: "img/Poster/ยังคงคอย(Nontanon).jpg"
     },
     {
-        id: '20',
+        id: '21',
         songName: `TIPTY TONE <br>
                     <div class="subtitle">BamBam</div>`,
         poster: "img/Poster/Subliminal(BamBam).jpg"
     },
-
-
-
     // Max to 21
 ];
 
@@ -142,3 +139,53 @@ Array.from(document.getElementsByClassName('songItem')).forEach((element, i) => 
     // อัพเดทชื่อเพลงและศิลปิน
     element.getElementsByTagName('h5')[0].innerHTML = songs[i].songName;
 });
+
+let masterPlay = document.getElementById("master_play");
+let wave = document.getElementsByClassName("wave")[0];
+
+masterPlay.addEventListener('click', () => {
+    if (music.paused || music.currentTime <= 0) {
+        music.play();
+        masterPlay.classList.remove('bi-play-circle');
+        masterPlay.classList.add('bi-pause-circle');
+        wave.classList.add("active2");
+    } else {
+        music.pause();
+        masterPlay.classList.add('bi-play-circle');
+        masterPlay.classList.remove('bi-pause-circle');
+        wave.classList.remove("active2");
+    }
+})
+
+const makeAllPlays = () => {
+    Array.from(document.getElementsByClassName('playListPlay')).forEach((element) => {
+        element.classList.add('bi-play-circle-fill');
+        element.classList.remove('bi-pause-circle-fill');
+    })
+}
+
+let index = 0;
+// 
+let poster_master_play = document.getElementById('poster_master_play')
+// 
+let title = document.getElementById('title')
+
+Array.from(document.getElementsByClassName('playListPlay')).forEach((element) => {
+    element.addEventListener('click', (e) => {
+        index = e.target.id;
+        makeAllPlays();
+        e.target.classList.remove('bi-play-circle-fill');
+        e.target.classList.add('bi-pause-circle-fill');
+        music.src = `audio/${index}.mp3`;
+        // poster_master_play.src = `img/${index}.jpg`;
+        music.play();
+        let song_title = songs.filter((ele)=>{
+            return ele.id == index;
+        })
+
+        song_title.forEach(ele => {
+            let {songName} = ele;
+            title.innerHTML = songName;
+        })
+    })
+})
